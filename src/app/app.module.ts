@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { TopicTileComponent } from './topics-list/topic-tile/topic-tile.component';
 import { TopicDetailComponent } from './topic-detail/topic-detail.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 export const appRoutes: Routes = [
   {
@@ -38,7 +39,8 @@ export const appRoutes: Routes = [
     TopicsListComponent,
     HomeComponent,
     TopicTileComponent,
-    TopicDetailComponent
+    TopicDetailComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
