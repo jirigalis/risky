@@ -5,8 +5,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 //http client
 import { HttpClientModule } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
 import { UserService } from './service/user.service';
 
 import { AppComponent } from './app.component';
@@ -46,9 +44,6 @@ export const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
     NgbModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,

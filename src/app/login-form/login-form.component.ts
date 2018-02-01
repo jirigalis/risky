@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user.service';
 
+import { User } from '../user/User';
+
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
@@ -17,8 +19,8 @@ export class LoginFormComponent implements OnInit {
   }
 
   getUsers(): void {
-  	this.users = this.userService.getUsers()
-		.subscribe(users => this.users = users);
+  	this.userService.getUsers()
+		.subscribe(users => {this.users = users; console.log(users)});
   }
 
 }
