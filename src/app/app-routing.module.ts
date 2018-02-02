@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { TopicDetailComponent } from './topic-detail/topic-detail.component';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { TopicDetailComponent } from './topics/topic-detail/topic-detail.component';
+import { LoginFormComponent } from './login/login-form/login-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
