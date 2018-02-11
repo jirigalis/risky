@@ -13,7 +13,8 @@
     ],
     "types": [
       "jquery",
-      "bootstrap",  
+      "bootstrap",
+      "lodash",  
       "node"
     ],
     "lib": [

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from '../../core/user.service';
 
 import { User } from '../../core/User';
@@ -17,7 +18,7 @@ export class LoginFormComponent implements OnInit {
     password: ""
   };
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -30,9 +31,9 @@ export class LoginFormComponent implements OnInit {
   login(): void {
     this.userService.login(this.user)
       .subscribe(user => {
-
-        localStorage.setItem('user', user);
-        console.log(user);
+        localStorage.setItem('user', JSON.stringify(user.user));
+        localStorage.setItem('token', user.token)
+        this.router.navigate(['/']);
       })
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Topic } from '../topics';
+import { Topic } from '../../topic';
 
 @Component({
   selector: 'topic-tile',

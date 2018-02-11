@@ -1,0 +1,50 @@
+<form novalidate [formGroup]="questionForm">
+  <div class="row">
+    <div class="form-group col-md-6 col-sm-8 col-xs-12">
+        <label for="text">Text of question:</label>
+        <input class="form-control" placeholder="text" formControlName="text">
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-4 col-sm-5 col-xs-12">
+      <label for="topics">Topics</label>
+      <select multiple class="form-control" id="topics"  name="topics" formControlName="qtopics">
+        <option *ngFor="let t of topics" [value]="t.id">{{t.name}}</option>
+      </select>
+      <div class="alert alert-danger" [hidden]="selectedTopicsCount > 0">
+        You must select at least one category! {{ qtopics }}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-4 col-sm-5 col-xs-12">
+      <div class="form-check">
+        <input type="radio" id="attachment-file-radio" formControlName="attachmentType" [value]="true" [checked]="attachmentType"/>
+        <label for="attachment-file-radio" class="form-check-label">File Attachmnet</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" id="attachment-base64-radio" formControlName="attachmentType" [value]="false"/>
+        <label for="attachment-base64-radio" class="form-check-label">Base64 Attachment</label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-4 col-sm-5 col-xs-12" *ngIf="attachmentType">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" name="attachment" id="attachment-file">
+        <label class="custom-file-label" for="attachment-file">Choose a file</label>
+      </div>
+    </div>
+    <div class="form-group col-md-4 col-sm-5 col-xs-12" *ngIf="!attachmentType">
+      <textarea class="form-control" name="attachment" placeholder="Paste Base64 code..."></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-12 col-xs-12">
+      <button type="button" (click)="submitQuestion()" class="btn btn-primary">
+        <i class="fa fa-pencil"></i>
+        Confirm
+      </button>
+    </div>
+  </div>
+</form>

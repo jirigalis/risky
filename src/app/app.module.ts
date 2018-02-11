@@ -3,11 +3,15 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuard } from './core/auth.guard';
 
 //http client
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './core/user.service';
+import { TopicsService } from './topics/topics.service';
+import { QuestionService } from './question/question.service';
 import { AuthInterceptor } from './http-interceptor';
 
 import { AppComponent } from './app.component';
@@ -18,21 +22,10 @@ import { TopicTileComponent } from './topics/topics-list/topic-tile/topic-tile.c
 import { TopicDetailComponent } from './topics/topic-detail/topic-detail.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { LoginFormComponent } from './login/login-form/login-form.component';
+import { QuestionListComponent } from './question/question-list/question-list.component';
+import { QuestionFormComponent } from './question/question-form/question-form.component';
+import { QuestionDetailComponent } from './question/question-detail/question-detail.component';
 
-export const appRoutes: Routes = [
-  {
-    path: '',
-    component: HomeComponent
-  },
-  {
-    path: 'topics',
-    component: TopicsListComponent
-  }
-  /*{
-    path: '**',
-    component: PageNotFoundComponent
-  }*/
-];
 
 @NgModule({
   declarations: [
@@ -42,21 +35,24 @@ export const appRoutes: Routes = [
     HomeComponent,
     TopicTileComponent,
     TopicDetailComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    QuestionListComponent,
+    QuestionDetailComponent,
+    QuestionFormComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgbModule.forRoot(),
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true }
-    ),
     AppRoutingModule
   ],
   providers: [
+    AuthGuard,
     UserService,
+    TopicsService,
+    QuestionService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

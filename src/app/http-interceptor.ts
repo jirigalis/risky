@@ -8,9 +8,14 @@ import { UserService } from './core/user.service';
 export class AuthInterceptor implements HttpInterceptor {
 
 	intercept (req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-		const authReq = req.clone({
-			headers: req.headers.set('x-access-token', 'token')
-		});
-		return next.handle(authReq);
+		
+		let token = localStorage.getItem('token');
+		if (token) {
+			const authReq = req.clone({
+				headers: req.headers.set('x-access-token', token)
+			});
+			return next.handle(authReq);
+		}
+		return next.handle(req);
 	}
 }

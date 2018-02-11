@@ -1,0 +1,30 @@
+<navbar></navbar>
+<main class="px-4 py-3">
+  <h2>Questions</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Topics</th>
+          <th>Text</th>
+          <th>Level</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let q of questions">
+          <td>{{q.id}}</td>
+          <td>{{q.topics}}</td>
+          <td>{{q.text}}</td>
+          <td>{{q.level}}</td>
+          <td>
+            <a routerLink="/questions/{{q.id}}" role="button" placement="top" ngbTooltip="Edit this question">
+              <i class="fa fa-pencil"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>

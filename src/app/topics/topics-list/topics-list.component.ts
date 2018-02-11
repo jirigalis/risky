@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
-import { TOPICS } from './topics';
 import { HttpClient } from '@angular/common/http';
+
+import { TopicsService } from '../topics.service';
+import { Topic } from '../topic';
 
 @Component({
   selector: 'app-topics-list',
@@ -10,21 +11,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TopicsListComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private topic: TopicsService) { }
 
-  results: string[];
-
-  topics = TOPICS;
+  topics: Topic[];
 
   ngOnInit():void {
-    this.http.get('/api/topics').subscribe(data => {
-      this.results = data['results'];
-      console.log(this.results);
-    },
-    err => {
-      console.log('An error occured.', err);
-    }
-  );
+    this.topic.getTopics()
+      .subscribe(topics => this.topics = topics)
   }
 
 }

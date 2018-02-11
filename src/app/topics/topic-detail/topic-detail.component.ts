@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Topic } from '../topics-list/topics';
-import { TopicsService } from '../topics-list/topics.service';
+import { Topic } from '../topic';
+import { TopicsService } from '../topics.service';
 
 @Component({
   selector: 'app-topic-detail',

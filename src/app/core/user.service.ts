@@ -24,10 +24,15 @@ export class UserService {
   }
 
   login(user): Observable<any> {
+    console.log(user);
     return this.http.post<User>(this.usersUrl, user)
       .pipe(
         catchError(this.handleError('login', []))
       );
+  }
+
+  logout() {
+    localStorage.clear();
   }
 
   isLoggedIn(): Boolean {
