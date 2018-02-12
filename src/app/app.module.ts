@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './core/user.service';
 import { TopicsService } from './topics/topics.service';
 import { QuestionService } from './question/question.service';
+import { LevelService } from './level/level.service';
 import { AuthInterceptor } from './http-interceptor';
 
 import { AppComponent } from './app.component';
@@ -53,6 +54,7 @@ import { QuestionDetailComponent } from './question/question-detail/question-det
     UserService,
     TopicsService,
     QuestionService,
+    LevelService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

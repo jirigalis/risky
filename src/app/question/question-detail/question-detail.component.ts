@@ -13,7 +13,7 @@ import { Topic } from '../../topics/topic';
 })
 export class QuestionDetailComponent implements OnInit {
 
-  question: Question;
+  question: Question = undefined;
 
   constructor(
     private QuestionService: QuestionService,
@@ -26,7 +26,6 @@ export class QuestionDetailComponent implements OnInit {
     this.QuestionService.getQuestion(id)
       .subscribe(question => {
         this.question = question;
-        console.log(question);
       });
   }
 }
