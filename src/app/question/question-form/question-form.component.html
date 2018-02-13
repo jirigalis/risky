@@ -3,7 +3,7 @@
     <div class="form-group col-md-6 col-sm-8 col-xs-12">
         <label for="text">Text of question:</label>
         <input class="form-control" placeholder="text" formControlName="text">
-        <div class="alert alert-danger" *ngIf="text.errors?.required">
+        <div class="alert alert-danger" *ngIf="!text.pristine && text.errors?.required">
           Text of the question must not be empty!
         </div>
     </div>
@@ -11,10 +11,10 @@
   <div class="row">
     <div class="form-group col-md-3 col-sm-6 col-xs-12">
       <label for="topics">Topics:</label>
-      <select multiple class="form-control" id="topics"  name="topics" formControlName="qtopics">
-        <option *ngFor="let t of topics" [value]="t.id">{{t.name}}</option>
+      <select multiple class="form-control" id="topics"  name="topics" formControlName="topics">
+        <option *ngFor="let t of allTopics" [value]="t.id">{{t.name}}</option>
       </select>
-      <div class="alert alert-danger" *ngIf="qtopics.errors?.required">
+      <div class="alert alert-danger" *ngIf="!topics.pristine && topics.errors?.required">
         You must select at least one category!
       </div>
     </div>
@@ -29,7 +29,7 @@
   <div class="row">
     <div class="form-group col-md-3 col-sm-6 col-xs-12">
       <div class="form-check">
-        <input type="radio" id="attachment-file-radio" formControlName="attachmentType" value="file"/>
+        <input type="radio" id="attachment-file-radio" formControlName="attachmentType" value="file"  [attr.disabled]="true" />
         <label for="attachment-file-radio" class="form-check-label">File Attachmnet</label>
       </div>
       <div class="form-check">
@@ -40,13 +40,13 @@
   </div>
   <div class="row">
     <div class="form-group col-md-4 col-sm-5 col-xs-12" *ngIf="attachmentType.value === 'file'">
-      <div class="custom-file">
-        <input type="file" class="custom-file-input" name="attachment" id="attachment-file">
-        <label class="custom-file-label" for="attachment-file">Choose a file</label>
+      <div class="">
+        <label for="attachment-file">Choose a file:</label>
+        <input type="file" class="form-control" name="attachment" id="attachment-file" formControlName="attachment">
       </div>
     </div>
     <div class="form-group col-md-4 col-sm-5 col-xs-12" *ngIf="attachmentType.value === 'base64'">
-      <textarea class="form-control" name="attachment" placeholder="Paste Base64 code..."></textarea>
+      <textarea class="form-control" name="attachment" formControlName="attachment" placeholder="Paste Base64 code..."></textarea>
     </div>
   </div>
   <div class="row">

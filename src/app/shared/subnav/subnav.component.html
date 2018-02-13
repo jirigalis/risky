@@ -1,0 +1,11 @@
+<div class="nav-scroller bg-light box-shadow">
+  <nav class="nav nav-underline">
+    <a *ngFor="let item of items"
+    	class="nav-link"
+    	[routerLink]="item.routerLink ? item.routerLink : null"
+    	(click)="item.action()">
+    	<i *ngIf="item?.icon" class="fa fa-{{item.icon}}"></i>
+    	{{item.title}}
+    </a>
+  </nav>
+</div>

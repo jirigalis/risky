@@ -15,7 +15,8 @@
       "jquery",
       "bootstrap",
       "lodash",  
-      "node"
+      "node",
+      "angular2-notifications"
     ],
     "lib": [
       "es2017",

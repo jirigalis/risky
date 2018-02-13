@@ -31,6 +31,15 @@ export class QuestionService {
 
     }
 
+    update(question: Question): Observable<Question> {
+        const url = `${this.url}/${question.id}`;
+        return this.http.put<Question>(url, question)
+            .pipe(
+                catchError(this.handleError<Question>(`update id=${question.id}`))
+            )
+
+    }
+
     private handleError<T> (operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
           console.error(error);

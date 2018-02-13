@@ -6,6 +6,7 @@ import { TopicDetailComponent } from './topics/topic-detail/topic-detail.compone
 import { TopicsListComponent } from './topics/topics-list/topics-list.component';
 import { QuestionListComponent } from './question/question-list/question-list.component';
 import { QuestionDetailComponent } from './question/question-detail/question-detail.component';
+import { QuestionNewComponent } from './question/question-new/question-new.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
 import { AuthGuard } from './core/auth.guard';
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'topic/:id', component: TopicDetailComponent, canActivate: [AuthGuard] },
   { path: 'questions', component: QuestionListComponent, canActivate: [AuthGuard]},
   { path: 'questions/:id', component: QuestionDetailComponent, canActivate: [AuthGuard]},
+  { path: 'questions/new', component: QuestionNewComponent, canActivate: [AuthGuard]},
 
   // otherwise redirect to home
   { path: '**', redirectTo: '/' }

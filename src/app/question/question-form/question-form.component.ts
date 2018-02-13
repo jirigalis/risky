@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as _ from 'lodash';
+import { NotificationsService } from 'angular2-notifications';
 
 import { Question } from '../question';
 import { Topic } from '../../topics/topic';
@@ -19,9 +20,8 @@ import { LevelService } from '../../level/level.service';
 export class QuestionFormComponent implements OnInit, OnChanges {
 
   @Input() question: Question;
-  topics: Topic[];
+  allTopics: Topic[];
   levels: Level[];
-  selectedTopicsCount = 1;
 
   questionForm: FormGroup;
 
@@ -31,7 +31,8 @@ export class QuestionFormComponent implements OnInit, OnChanges {
     private LevelService: LevelService,
     private location: Location,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private notify: NotificationsService
   ) {
     this.createForm();
   }
@@ -41,7 +42,7 @@ export class QuestionFormComponent implements OnInit, OnChanges {
     
     this.TopicsService.getTopics()
       .subscribe(topics => {
-        this.topics = topics;
+        this.allTopics = topics;
       })
 
     this.LevelService.getLevels()
@@ -52,8 +53,9 @@ export class QuestionFormComponent implements OnInit, OnChanges {
     if (typeof changes.question.currentValue !== "undefined") {
       this.questionForm.reset({
         text: this.question.text,
-        qtopics: this.question.topics,
-        attachmentType: 'file',
+        topics: this.question.topics,
+        attachmentType: 'base64',
+        attachment: this.question.attachment,
         level: this.question.level
       });
     }
@@ -62,28 +64,31 @@ export class QuestionFormComponent implements OnInit, OnChanges {
   createForm() {
     this.questionForm = this.fb.group({
       text: new FormControl('', Validators.required),
-      qtopics: new FormControl([], Validators.required),
-      attachment: '',
+      topics: new FormControl([], Validators.required),
+      attachment: new FormControl(''),
       attachmentType: new FormControl(''),
-      level: new FormControl('')
+      level: new FormControl('1000')
     });
   }
 
   submitQuestionForm() {
     if (this.questionForm.valid) {
+      const id = this.question.id;
       this.question = this.questionForm.value;
-      //QuestionService.update()
+      this.question.id = id;
+      this.QuestionService.update(this.question)
+        .subscribe(res => {
+          this.notify.success("Success", 'The question was successfully updated.');
+        })
     }
-    console.log(this.questionForm.value);
-    console.log(this.question);
   }
 
   get text() {
     return this.questionForm.get('text');
   }
 
-  get qtopics() {
-    return this.questionForm.get('qtopics');
+  get topics() {
+    return this.questionForm.get('topics');
   }
 
   get attachmentType() {

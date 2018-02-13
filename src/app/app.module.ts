@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule, Routes } from '@angular/router';
@@ -6,8 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './core/auth.guard';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
-//http client
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './core/user.service';
 import { TopicsService } from './topics/topics.service';
@@ -26,6 +27,8 @@ import { LoginFormComponent } from './login/login-form/login-form.component';
 import { QuestionListComponent } from './question/question-list/question-list.component';
 import { QuestionFormComponent } from './question/question-form/question-form.component';
 import { QuestionDetailComponent } from './question/question-detail/question-detail.component';
+import { QuestionNewComponent } from './question/question-new/question-new.component';
+import { SubnavComponent } from './shared/subnav/subnav.component';
 
 
 @NgModule({
@@ -40,9 +43,13 @@ import { QuestionDetailComponent } from './question/question-detail/question-det
     QuestionListComponent,
     QuestionDetailComponent,
     QuestionFormComponent,
+    QuestionNewComponent,
+    SubnavComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule, 
+    SimpleNotificationsModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

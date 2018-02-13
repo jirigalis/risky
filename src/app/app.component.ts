@@ -8,5 +8,9 @@ import { UserService } from './core/user.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'My app';
+  notifyOptions = {
+  	clickIconToClose: true,
+  	showProgressBar: true,
+  	timeOut: 3000
+  }
 }

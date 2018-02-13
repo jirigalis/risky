@@ -11,6 +11,14 @@ import { QuestionService } from '../question.service';
 export class QuestionListComponent implements OnInit {
 
   questions: Question[];
+  subnavItems = [
+    {
+      title: "Add new question",
+      icon: "plus-circle",
+      //routerLink: "new"
+      action: this.foo2
+    },
+  ];
   
   constructor(
     private QuestionService: QuestionService
@@ -19,6 +27,14 @@ export class QuestionListComponent implements OnInit {
   ngOnInit() {
     this.QuestionService.getQuestions()
       .subscribe(questions => this.questions = questions)
+  }
+
+  foo2() {
+    return () => { console.log('FOO') };
+  }
+
+  foo() {
+    console.log('BAR');
   }
 
 }
