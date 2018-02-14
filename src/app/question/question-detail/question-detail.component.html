@@ -1,5 +1,6 @@
 <navbar></navbar>
+<subnav [items]="subnavItems"></subnav>
 <main class="py-3 px-4">
   <h2>Detail of the question</h2>
-  <question-form [question]="question"></question-form>
+  <question-form [question]="question" [submitFunction]="submitForm"></question-form>
 </main>

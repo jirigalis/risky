@@ -16,7 +16,7 @@
       <tbody>
         <tr *ngFor="let q of questions">
           <td>{{q.id}}</td>
-          <td>{{q.topics}}</td>
+          <td>{{fetchTopics(q.topics)}}</td>
           <td>{{q.text}}</td>
           <td>{{q.level}}</td>
           <td>

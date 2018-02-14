@@ -12,7 +12,10 @@ export class SubnavComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  	console.log(this.items);
+  }
+
+  performAction(item) {
+  	item.action();
   }
 
 }

@@ -20,6 +20,7 @@ import { LevelService } from '../../level/level.service';
 export class QuestionFormComponent implements OnInit, OnChanges {
 
   @Input() question: Question;
+  @Input() submitFunction;
   allTopics: Topic[];
   levels: Level[];
 
@@ -66,12 +67,12 @@ export class QuestionFormComponent implements OnInit, OnChanges {
       text: new FormControl('', Validators.required),
       topics: new FormControl([], Validators.required),
       attachment: new FormControl(''),
-      attachmentType: new FormControl(''),
-      level: new FormControl('1000')
+      attachmentType: new FormControl('base64'),
+      level: new FormControl(1)
     });
   }
 
-  submitQuestionForm() {
+  submitQuestionForm2() {
     if (this.questionForm.valid) {
       const id = this.question.id;
       this.question = this.questionForm.value;
@@ -80,6 +81,22 @@ export class QuestionFormComponent implements OnInit, OnChanges {
         .subscribe(res => {
           this.notify.success("Success", 'The question was successfully updated.');
         })
+    }
+  }
+
+  submitQuestionForm() {    
+    if (this.questionForm.valid) {
+      this.submitFunction(this.questionForm.value)
+        .subscribe(res => {
+          if (res) {
+            this.notify.success('Success', 'The question was saved.');
+          } else {
+            this.notify.error('Something is wrong!', 'There was an error during saving question.');
+          }
+        })
+      
+    } else {
+      this.notify.error('Something is wrong!', 'The form is not valid. Check all values.');
     }
   }
 

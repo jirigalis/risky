@@ -1,3 +1,6 @@
-<p>
-  question-new works!
-</p>
+<navbar></navbar>
+<subnav [items]="subnavItems"></subnav>
+<main class="py-3 px-4">
+  <h2>New question</h2>
+  <question-form [question]="question" [submitFunction]="submitForm"></question-form>
+</main>

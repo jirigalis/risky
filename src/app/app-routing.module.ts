@@ -16,8 +16,8 @@ const routes: Routes = [
   { path: 'topics', component: TopicsListComponent, canActivate: [AuthGuard], pathMatch: 'full'},
   { path: 'topic/:id', component: TopicDetailComponent, canActivate: [AuthGuard] },
   { path: 'questions', component: QuestionListComponent, canActivate: [AuthGuard]},
-  { path: 'questions/:id', component: QuestionDetailComponent, canActivate: [AuthGuard]},
   { path: 'questions/new', component: QuestionNewComponent, canActivate: [AuthGuard]},
+  { path: 'questions/:id', component: QuestionDetailComponent, canActivate: [AuthGuard]},
 
   // otherwise redirect to home
   { path: '**', redirectTo: '/' }

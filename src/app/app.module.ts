@@ -14,6 +14,7 @@ import { UserService } from './core/user.service';
 import { TopicsService } from './topics/topics.service';
 import { QuestionService } from './question/question.service';
 import { LevelService } from './level/level.service';
+import { EventService } from './event/event.service';
 import { AuthInterceptor } from './http-interceptor';
 
 import { AppComponent } from './app.component';
@@ -62,6 +63,7 @@ import { SubnavComponent } from './shared/subnav/subnav.component';
     TopicsService,
     QuestionService,
     LevelService,
+    EventService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

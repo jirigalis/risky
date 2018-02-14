@@ -14,6 +14,13 @@ import { Topic } from '../../topics/topic';
 export class QuestionDetailComponent implements OnInit {
 
   question: Question = undefined;
+  subnavItems = [
+    {
+      title: "Back",
+      icon: "chevron-circle-left",
+      routerLink: "/questions"
+    }
+  ]
 
   constructor(
     private QuestionService: QuestionService,
@@ -27,5 +34,12 @@ export class QuestionDetailComponent implements OnInit {
       .subscribe(question => {
         this.question = question;
       });
+  }
+
+  submitForm(question: Question) {
+    if (question !== null ) {
+      question.id = this.question.id;
+      return this.QuestionService.update(question)
+    }
   }
 }
