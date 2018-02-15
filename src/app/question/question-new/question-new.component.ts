@@ -13,7 +13,7 @@ export class QuestionNewComponent implements OnInit {
   subnavItems = [
     {
       title: "Back",
-      icon: "plus-circle",
+      icon: "chevron-circle-left",
       routerLink: "/questions"
     }
   ]

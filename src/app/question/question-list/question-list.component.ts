@@ -29,11 +29,11 @@ export class QuestionListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.QuestionService.getQuestions()
-      .subscribe(questions => this.questions = questions)
-
     this.TopicsService.getTopics()
       .subscribe(topics => this.topics = topics)
+
+    this.QuestionService.getQuestions()
+      .subscribe(questions => this.questions = questions)
   }
 
   fetchTopics(topics) {

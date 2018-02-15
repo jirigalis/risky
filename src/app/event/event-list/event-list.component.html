@@ -1,0 +1,32 @@
+<navbar></navbar>
+<subnav [items]="subnavItems"></subnav>
+<main class="px-4 py-3">
+  <h2>Events</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Created</th>
+          <th>Last update</th>
+          <th>Author</th>
+          <th>State of event</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of events">
+          <td>{{e.id}}</td>
+          <td>{{e.created}}</td>
+          <td>{{e.updated}}</td>
+          <td>{{e.author}}</td>
+          <td>{{e.state}}</td>
+          <td>
+            <a routerLink="/events/{{e.id}}" role="button" placement="top" ngbTooltip="Edit this event">
+              <i class="fa fa-pencil"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>

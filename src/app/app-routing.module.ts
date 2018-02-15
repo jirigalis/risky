@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { TopicDetailComponent } from './topics/topic-detail/topic-detail.component';
 import { TopicsListComponent } from './topics/topics-list/topics-list.component';
 import { QuestionListComponent } from './question/question-list/question-list.component';
+import { EventListComponent } from './event/event-list/event-list.component';
 import { QuestionDetailComponent } from './question/question-detail/question-detail.component';
 import { QuestionNewComponent } from './question/question-new/question-new.component';
 import { LoginFormComponent } from './login/login-form/login-form.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'questions', component: QuestionListComponent, canActivate: [AuthGuard]},
   { path: 'questions/new', component: QuestionNewComponent, canActivate: [AuthGuard]},
   { path: 'questions/:id', component: QuestionDetailComponent, canActivate: [AuthGuard]},
+  { path: 'events', component: EventListComponent, canActivate: [AuthGuard], pathMatch: 'full'},
 
   // otherwise redirect to home
   { path: '**', redirectTo: '/' }

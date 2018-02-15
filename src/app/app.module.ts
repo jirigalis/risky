@@ -30,6 +30,7 @@ import { QuestionFormComponent } from './question/question-form/question-form.co
 import { QuestionDetailComponent } from './question/question-detail/question-detail.component';
 import { QuestionNewComponent } from './question/question-new/question-new.component';
 import { SubnavComponent } from './shared/subnav/subnav.component';
+import { EventListComponent } from './event/event-list/event-list.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { SubnavComponent } from './shared/subnav/subnav.component';
     QuestionFormComponent,
     QuestionNewComponent,
     SubnavComponent,
+    EventListComponent,
   ],
   imports: [
     BrowserModule,
