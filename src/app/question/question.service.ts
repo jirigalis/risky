@@ -33,7 +33,6 @@ export class QuestionService {
 
     create(question: Question) {
         const url = `${this.url}/new`;
-        console.log(question);
         return this.http.post(url, question)
             .pipe(
                 catchError(this.handleError<Question>(`save`))

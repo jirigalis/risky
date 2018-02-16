@@ -18,19 +18,26 @@ import { EventService } from './event/event.service';
 import { AuthInterceptor } from './http-interceptor';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './/app-routing.module';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { TopicsListComponent } from './topics/topics-list/topics-list.component';
 import { HomeComponent } from './home/home.component';
+
+import { TopicsListComponent } from './topics/topics-list/topics-list.component';
 import { TopicTileComponent } from './topics/topics-list/topic-tile/topic-tile.component';
 import { TopicDetailComponent } from './topics/topic-detail/topic-detail.component';
-import { AppRoutingModule } from './/app-routing.module';
+import { TopicFormComponent } from './topics/topic-form/topic-form.component';
+
 import { LoginFormComponent } from './login/login-form/login-form.component';
+
 import { QuestionListComponent } from './question/question-list/question-list.component';
 import { QuestionFormComponent } from './question/question-form/question-form.component';
 import { QuestionDetailComponent } from './question/question-detail/question-detail.component';
 import { QuestionNewComponent } from './question/question-new/question-new.component';
+
 import { SubnavComponent } from './shared/subnav/subnav.component';
+
 import { EventListComponent } from './event/event-list/event-list.component';
+import { TopicNewComponent } from './topics/topic-new/topic-new.component';
 
 
 @NgModule({
@@ -48,6 +55,8 @@ import { EventListComponent } from './event/event-list/event-list.component';
     QuestionNewComponent,
     SubnavComponent,
     EventListComponent,
+    TopicFormComponent,
+    TopicNewComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,13 @@ export class TopicsListComponent implements OnInit {
   constructor(private http: HttpClient, private topic: TopicsService) { }
 
   topics: Topic[];
+  subnavItems = [
+    {
+      title: "Add new Topic",
+      icon: "plus-circle",
+      routerLink: "/topics/new"
+    }
+  ];
 
   ngOnInit():void {
     this.topic.getTopics()

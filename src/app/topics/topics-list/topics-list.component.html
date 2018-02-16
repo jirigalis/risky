@@ -1,6 +1,29 @@
 <navbar></navbar>
-<div class="container-fluid">
-  <div class="row">
-    <topic-tile *ngFor="let topic of topics" [topic]="topic"></topic-tile>
+<subnav [items]="subnavItems"></subnav>
+<main class="px-4 py-3">
+  <h2>Topics</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Topic name</th>
+          <th>Description</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of topics">
+          <td>{{t.id}}</td>
+          <td>{{t.name}}</td>
+          <td>{{t.description}}</td>
+          <td>
+            <a routerLink="/topics/{{t.id}}" role="button" placement="top" ngbTooltip="Edit this topic">
+              <i class="fa fa-pencil"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-</div>
+</main>

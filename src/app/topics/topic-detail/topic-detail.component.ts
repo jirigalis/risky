@@ -11,11 +11,18 @@ import { TopicsService } from '../topics.service';
   styleUrls: ['./topic-detail.component.scss']
 })
 export class TopicDetailComponent implements OnInit {
-  @Input() topic: Topic;
+  topic: Topic;
+  subnavItems = [
+    {
+      title: "Back",
+      icon: "chevron-circle-left",
+      routerLink: "/topics"
+    }
+  ]
 
   constructor(
     private route: ActivatedRoute,
-    private topicsService: TopicsService,
+    private TopicsService: TopicsService,
     private location: Location
   ) { }
 
@@ -23,19 +30,21 @@ export class TopicDetailComponent implements OnInit {
     this.getTopic()
   }
 
+  submitForm(topic: Topic) {
+    if (topic !== null ) {
+      topic.id = this.topic.id;
+      return this.TopicsService.update(topic)
+    }
+  }
+
   getTopic(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    /*this.topicsService.getTopic(id)
-      .subscribe(topic => this.topic = topic)*/
+    this.TopicsService.getTopic(id)
+      .subscribe(topic => this.topic = topic);
   }
   
   goBack(): void {
     this.location.back();
-  }
-
-  save(): void {
-    /*this.topicsService.updateTopic(this.topic)
-      .subscribe(() => this.goBack());*/
   }
 
 }

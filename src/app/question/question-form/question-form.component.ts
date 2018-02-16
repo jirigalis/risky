@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as _ from 'lodash';
 import { NotificationsService } from 'angular2-notifications';
@@ -30,8 +29,8 @@ export class QuestionFormComponent implements OnInit, OnChanges {
     private QuestionService: QuestionService,
     private TopicsService: TopicsService,
     private LevelService: LevelService,
-    private location: Location,
     private route: ActivatedRoute,
+    private router: Router,
     private fb: FormBuilder,
     private notify: NotificationsService
   ) {
@@ -72,24 +71,13 @@ export class QuestionFormComponent implements OnInit, OnChanges {
     });
   }
 
-  submitQuestionForm2() {
-    if (this.questionForm.valid) {
-      const id = this.question.id;
-      this.question = this.questionForm.value;
-      this.question.id = id;
-      this.QuestionService.update(this.question)
-        .subscribe(res => {
-          this.notify.success("Success", 'The question was successfully updated.');
-        })
-    }
-  }
-
   submitQuestionForm() {    
     if (this.questionForm.valid) {
       this.submitFunction(this.questionForm.value)
         .subscribe(res => {
           if (res) {
             this.notify.success('Success', 'The question was saved.');
+            this.router.navigate(['questions']);
           } else {
             this.notify.error('Something is wrong!', 'There was an error during saving question.');
           }
