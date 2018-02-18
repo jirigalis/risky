@@ -10,6 +10,7 @@ import { AuthGuard } from './core/auth.guard';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ModalService } from './shared/modal/modal.service';
 import { UserService } from './core/user.service';
 import { TopicsService } from './topics/topics.service';
 import { QuestionService } from './question/question.service';
@@ -38,6 +39,7 @@ import { SubnavComponent } from './shared/subnav/subnav.component';
 
 import { EventListComponent } from './event/event-list/event-list.component';
 import { TopicNewComponent } from './topics/topic-new/topic-new.component';
+import { ModalDeleteComponent } from './shared/modal/modal-delete/modal-delete.component';
 
 
 @NgModule({
@@ -57,6 +59,7 @@ import { TopicNewComponent } from './topics/topic-new/topic-new.component';
     EventListComponent,
     TopicFormComponent,
     TopicNewComponent,
+    ModalDeleteComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +73,7 @@ import { TopicNewComponent } from './topics/topic-new/topic-new.component';
   ],
   providers: [
     AuthGuard,
+    ModalService,
     UserService,
     TopicsService,
     QuestionService,
@@ -81,6 +85,7 @@ import { TopicNewComponent } from './topics/topic-new/topic-new.component';
       multi: true
     }
   ],
+  entryComponents: [ModalDeleteComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
