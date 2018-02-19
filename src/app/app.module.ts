@@ -39,7 +39,7 @@ import { SubnavComponent } from './shared/subnav/subnav.component';
 
 import { EventListComponent } from './event/event-list/event-list.component';
 import { TopicNewComponent } from './topics/topic-new/topic-new.component';
-import { ModalDeleteComponent } from './shared/modal/modal-delete/modal-delete.component';
+import { ModalComponent } from './shared/modal/modal/modal.component';
 
 
 @NgModule({
@@ -59,7 +59,7 @@ import { ModalDeleteComponent } from './shared/modal/modal-delete/modal-delete.c
     EventListComponent,
     TopicFormComponent,
     TopicNewComponent,
-    ModalDeleteComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +85,7 @@ import { ModalDeleteComponent } from './shared/modal/modal-delete/modal-delete.c
       multi: true
     }
   ],
-  entryComponents: [ModalDeleteComponent],
+  entryComponents: [ModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
