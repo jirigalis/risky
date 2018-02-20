@@ -5,9 +5,12 @@
 	</button>
 </div>
 <div class="modal-body">
-	<p>{{modal.text}}</p>
+	<p>{{modal.content}}</p>
 </div>
 <div class="modal-footer">
 	<button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Cancel click')">{{modal.cancel}}</button>
-	<button type="button" class="btn btn-success" (click)="activeModal.close(true)">{{modal.confirm}}</button>
+	<button type="button" class="btn {{modal.button}}" (click)="activeModal.close(true)">
+		<i class="fa fa-{{modal.icon}}"></i>
+		{{modal.confirm}}
+	</button>
 </div>

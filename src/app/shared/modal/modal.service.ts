@@ -12,19 +12,22 @@ export class ModalService {
 
   defaultModalConfig = {
     heading: 'Confirm action',
-    text: 'Do you really want to perform this action?',
+    content: 'Do you really want to perform this action?',
     cancel: 'Cancel',
-    confirm: 'Confirm'
+    confirm: 'Confirm',
+    icon: 'check',
+    button: 'btn-success'
   }
 
-  delete() {
-
+  DELETE = {
+    heading: 'Confirm delete action',
+    content: 'Do you really want to delete this item?',
+    icon: 'trash',
+    button: 'btn-danger'
   }
 
   open(config = null) {
   	const modalRef = this.modal.open(ModalComponent);
-    modalRef.componentInstance.name = 'World 2';
-    console.log(config);
     if (config === null) {
       config = this.defaultModalConfig;
     } else {
@@ -32,6 +35,10 @@ export class ModalService {
     }
     modalRef.componentInstance.modal = config;
     return modalRef.result;
+  }
+
+  delete() {
+    return this.open(this.DELETE);
   }
 
 }

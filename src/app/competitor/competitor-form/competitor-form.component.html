@@ -1,0 +1,25 @@
+<form novalidate [formGroup]="competitorForm" (ngSubmit)="submitCompetitorForm()">
+  <div class="row">
+    <div class="form-group col-md-6 col-sm-8 col-xs-12">
+        <label for="name">Name of competitor:</label>
+        <input class="form-control" placeholder="name" formControlName="name">
+        <div class="alert alert-danger" *ngIf="!name.pristine && name.errors?.required">
+          Name of the competitor must not be empty!
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-3 col-sm-6 col-xs-12">
+      <label for="note">Note:</label>
+      <textarea class="form-control" placeholder="note" formControlName="note"></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="form-group col-md-12 col-xs-12">
+      <button type="submit" class="btn btn-primary">
+        <i class="fa fa-pencil"></i>
+        Confirm
+      </button>
+    </div>
+  </div>
+</form>

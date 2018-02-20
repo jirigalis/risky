@@ -30,7 +30,7 @@ export class TopicsService {
 	getTopic(id: number): Observable<Topic> {
 		const url = `${this.topicsUrl}/${id}`;
 		return this.http.get<Topic>(url).pipe(
-			catchError(this.handleError<Topic>(`getHero id=${id}`))
+			catchError(this.handleError<Topic>(`getTopic id=${id}`))
 		);
 	}
 
@@ -55,6 +55,11 @@ export class TopicsService {
 			.pipe(
 				catchError(this.handleError<Topic>(`save`))
 			)
+	}
+
+	delete(id: number) {
+		const url = `${this.topicsUrl}/delete/${id}`;
+		return this.http.delete(url)			
 	}
 
 	private handleError<T> (operation = 'operation', result?: T) {

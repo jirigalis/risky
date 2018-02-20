@@ -16,6 +16,7 @@ import { TopicsService } from './topics/topics.service';
 import { QuestionService } from './question/question.service';
 import { LevelService } from './level/level.service';
 import { EventService } from './event/event.service';
+import { CompetitorService } from './competitor/competitor.service';
 import { AuthInterceptor } from './http-interceptor';
 
 import { AppComponent } from './app.component';
@@ -40,6 +41,10 @@ import { SubnavComponent } from './shared/subnav/subnav.component';
 import { EventListComponent } from './event/event-list/event-list.component';
 import { TopicNewComponent } from './topics/topic-new/topic-new.component';
 import { ModalComponent } from './shared/modal/modal/modal.component';
+import { CompetitorListComponent } from './competitor/competitor-list/competitor-list.component';
+import { CompetitorDetailComponent } from './competitor/competitor-detail/competitor-detail.component';
+import { CompetitorFormComponent } from './competitor/competitor-form/competitor-form.component';
+import { CompetitorNewComponent } from './competitor/competitor-new/competitor-new.component';
 
 
 @NgModule({
@@ -60,6 +65,10 @@ import { ModalComponent } from './shared/modal/modal/modal.component';
     TopicFormComponent,
     TopicNewComponent,
     ModalComponent,
+    CompetitorListComponent,
+    CompetitorDetailComponent,
+    CompetitorFormComponent,
+    CompetitorNewComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +88,7 @@ import { ModalComponent } from './shared/modal/modal/modal.component';
     QuestionService,
     LevelService,
     EventService,
+    CompetitorService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

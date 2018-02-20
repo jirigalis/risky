@@ -26,78 +26,78 @@ export class QuestionFormComponent implements OnInit, OnChanges {
   questionForm: FormGroup;
 
   constructor(
-    private QuestionService: QuestionService,
-    private TopicsService: TopicsService,
-    private LevelService: LevelService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private fb: FormBuilder,
-    private notify: NotificationsService
+	private QuestionService: QuestionService,
+	private TopicsService: TopicsService,
+	private LevelService: LevelService,
+	private route: ActivatedRoute,
+	private router: Router,
+	private fb: FormBuilder,
+	private notify: NotificationsService
   ) {
-    this.createForm();
+	this.createForm();
   }
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id');
-    
-    this.TopicsService.getTopics()
-      .subscribe(topics => {
-        this.allTopics = topics;
-      })
+	const id = +this.route.snapshot.paramMap.get('id');
+	
+	this.TopicsService.getTopics()
+	  .subscribe(topics => {
+		this.allTopics = topics;
+	  })
 
-    this.LevelService.getLevels()
-      .subscribe(levels => this.levels = levels);
+	this.LevelService.getLevels()
+	  .subscribe(levels => this.levels = levels);
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (typeof changes.question.currentValue !== "undefined") {
-      this.questionForm.reset({
-        text: this.question.text,
-        topics: this.question.topics,
-        attachmentType: 'base64',
-        attachment: this.question.attachment,
-        level: this.question.level
-      });
-    }
+	if (typeof changes.question.currentValue !== "undefined") {
+	  this.questionForm.reset({
+		text: this.question.text,
+		topics: this.question.topics,
+		attachmentType: 'base64',
+		attachment: this.question.attachment,
+		level: this.question.level
+	  });
+	}
   }
 
   createForm() {
-    this.questionForm = this.fb.group({
-      text: new FormControl('', Validators.required),
-      topics: new FormControl([], Validators.required),
-      attachment: new FormControl(''),
-      attachmentType: new FormControl('base64'),
-      level: new FormControl(1)
-    });
+	this.questionForm = this.fb.group({
+	  text: new FormControl('', Validators.required),
+	  topics: new FormControl([], Validators.required),
+	  attachment: new FormControl(''),
+	  attachmentType: new FormControl('base64'),
+	  level: new FormControl(1)
+	});
   }
 
   submitQuestionForm() {    
-    if (this.questionForm.valid) {
-      this.submitFunction(this.questionForm.value)
-        .subscribe(res => {
-          if (res) {
-            this.notify.success('Success', 'The question was saved.');
-            this.router.navigate(['questions']);
-          } else {
-            this.notify.error('Something is wrong!', 'There was an error during saving question.');
-          }
-        })
-      
-    } else {
-      this.notify.error('Something is wrong!', 'The form is not valid. Check all values.');
-    }
+	if (this.questionForm.valid) {
+	  this.submitFunction(this.questionForm.value)
+		.subscribe(res => {
+		  if (res) {
+			this.notify.success('Success', 'The question was saved.');
+			this.router.navigate(['questions']);
+		  } else {
+			this.notify.error('Something is wrong!', 'There was an error during saving question.');
+		  }
+		})
+	  
+	} else {
+	  this.notify.error('Something is wrong!', 'The form is not valid. Check all values.');
+	}
   }
 
   get text() {
-    return this.questionForm.get('text');
+	return this.questionForm.get('text');
   }
 
   get topics() {
-    return this.questionForm.get('topics');
+	return this.questionForm.get('topics');
   }
 
   get attachmentType() {
-    return this.questionForm.get('attachmentType');
+	return this.questionForm.get('attachmentType');
   }
 
 }
