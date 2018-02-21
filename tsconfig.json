@@ -14,7 +14,8 @@
     "types": [
       "jquery",
       "bootstrap",
-      "lodash",  
+      "lodash", 
+      "moment", 
       "node",
       "angular2-notifications"
     ],

@@ -16,7 +16,7 @@ export class CompetitorDetailComponent implements OnInit {
     {
       title: "Back",
       icon: "chevron-circle-left",
-      routerLink: "/questions"
+      routerLink: "/competitors"
     }
   ]
 

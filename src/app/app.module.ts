@@ -45,6 +45,9 @@ import { CompetitorListComponent } from './competitor/competitor-list/competitor
 import { CompetitorDetailComponent } from './competitor/competitor-detail/competitor-detail.component';
 import { CompetitorFormComponent } from './competitor/competitor-form/competitor-form.component';
 import { CompetitorNewComponent } from './competitor/competitor-new/competitor-new.component';
+import { EventNewComponent } from './event/event-new/event-new.component';
+import { EventFormComponent } from './event/event-form/event-form.component';
+import { EventDetailComponent } from './event/event-detail/event-detail.component';
 
 
 @NgModule({
@@ -69,6 +72,9 @@ import { CompetitorNewComponent } from './competitor/competitor-new/competitor-n
     CompetitorDetailComponent,
     CompetitorFormComponent,
     CompetitorNewComponent,
+    EventNewComponent,
+    EventFormComponent,
+    EventDetailComponent,
   ],
   imports: [
     BrowserModule,

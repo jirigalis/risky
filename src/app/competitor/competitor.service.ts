@@ -49,6 +49,11 @@ export class CompetitorService {
 
 	}
 
+	delete(id: number) {
+		const url = `${this.competitorsUrl}/delete/${id}`;
+		return this.http.delete(url)
+	}
+
 	private handleError<T> (operation = 'operation', result?: T) {
 		return (error: any): Observable<T> => {
 			console.error(error);

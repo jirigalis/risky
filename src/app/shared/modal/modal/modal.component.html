@@ -8,7 +8,7 @@
 	<p>{{modal.content}}</p>
 </div>
 <div class="modal-footer">
-	<button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Cancel click')">{{modal.cancel}}</button>
+	<button type="button" class="btn btn-outline-dark" (click)="activeModal.close(false)">{{modal.cancel}}</button>
 	<button type="button" class="btn {{modal.button}}" (click)="activeModal.close(true)">
 		<i class="fa fa-{{modal.icon}}"></i>
 		{{modal.confirm}}

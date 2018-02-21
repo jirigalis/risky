@@ -17,7 +17,7 @@
         <tr *ngFor="let c of competitors">
           <td>{{c.id}}</td>
           <td>{{c.name}}</td>
-          <td>{{c.created}}</td>
+          <td>{{formatTimestamp(c.created)}}</td>
           <td>{{c.note}}</td>
           <td>
             <a routerLink="/competitors/{{c.id}}" role="button" placement="top" ngbTooltip="Edit this topic">

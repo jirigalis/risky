@@ -4,6 +4,8 @@ export class Event {
 	created: number;
 	updated: number;
 	state: EventState;
+	competitors;
+	topics;
 }
 
 export enum EventState {
