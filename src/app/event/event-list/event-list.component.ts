@@ -10,6 +10,13 @@ import { EventService } from '../event.service';
 })
 export class EventListComponent implements OnInit {
 	events: Event[];
+  subnavItems = [
+    {
+      title: "Add new question",
+      icon: "plus-circle",
+      routerLink: "/events/new"
+    }
+  ];
 
   constructor(private EventService: EventService) { }
 

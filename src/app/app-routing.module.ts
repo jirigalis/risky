@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { EventListComponent } from './event/event-list/event-list.component';
+import { EventDetailComponent } from './event/event-detail/event-detail.component';
+import { EventNewComponent } from './event/event-new/event-new.component';
 
 import { CompetitorListComponent } from './competitor/competitor-list/competitor-list.component';
 import { CompetitorNewComponent } from './competitor/competitor-new/competitor-new.component';
@@ -32,6 +34,8 @@ const routes: Routes = [
   { path: 'questions/:id', component: QuestionDetailComponent, canActivate: [AuthGuard]},
   
   { path: 'events', component: EventListComponent, canActivate: [AuthGuard], pathMatch: 'full'},
+  { path: 'events/new', component: EventNewComponent, canActivate: [AuthGuard] },
+  { path: 'events/:id', component: EventDetailComponent, canActivate: [AuthGuard] },
 
   { path: 'competitors', component: CompetitorListComponent, canActivate: [AuthGuard], pathMatch: 'full'},
   { path: 'competitors/new', component: CompetitorNewComponent, canActivate: [AuthGuard] },

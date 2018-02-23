@@ -1,3 +1,6 @@
-<p>
-  event-new works!
-</p>
+<navbar></navbar>
+<subnav [items]="subnavItems"></subnav>
+<main class="py-3 px-4">
+  <h2>New event</h2>
+  <event-form [event]="event" [submitFunction]="submitForm"></event-form>
+</main>

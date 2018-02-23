@@ -26,6 +26,14 @@ export class EventService {
                 );
 	}
 
+	create(event: Event) {
+		const url = `${this.eventsUrl}/new`;
+		return this.http.post(url, event)
+			.pipe(
+                catchError(this.handleError<Event>(`create`))
+            )
+	}
+
 	private handleError<T> (operation = 'operation', result?: T) {
 	    return (error: any): Observable<T> => {
 	        console.error(error);

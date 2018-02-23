@@ -8,10 +8,11 @@ import { NotificationsService } from 'angular2-notifications';
 import { Event } from '../event';
 import { EventService } from '../event.service';
 import { CompetitorService } from '../../competitor/competitor.service';
+import { Topic } from '../../topics/topic';
 import { TopicsService } from '../../topics/topics.service';
 
 @Component({
-  selector: 'app-event-form',
+  selector: 'event-form',
   templateUrl: './event-form.component.html',
   styleUrls: ['./event-form.component.scss']
 })
@@ -20,6 +21,8 @@ export class EventFormComponent implements OnInit {
 	@Input() event: Event;
 	@Input() submitFunction;
 	eventForm: FormGroup;
+	allTopics: Topic[];
+	allQuestions
 
 	constructor(
 		private EventService: EventService,
@@ -34,10 +37,11 @@ export class EventFormComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		const id = +this.route.snapshot.paramMap.get('id');
 	}
 
 	ngOnChanges(changes: SimpleChanges) {
-		if (typeof changes.competitor.currentValue !== 'undefined') {
+		if (typeof changes.event.currentValue !== 'undefined') {
 			this.eventForm.reset({
 				competitors: this.event.competitors,
 				topics: this.event.topics
@@ -50,6 +54,24 @@ export class EventFormComponent implements OnInit {
 			competitors: new FormControl([], Validators.required),
 			topics: new FormControl([], Validators.required)
 		});
+	}
+
+	submitEventForm() {    
+		if (this.eventForm.valid || true) {
+			//this.submitFunction(this.eventForm.value)
+			this.submitFunction({author: 1	, competitors: [1, 3] })
+			.subscribe(res => {
+				if (res) {
+					this.notify.success('Success', 'The event was saved.');
+					this.router.navigate(['events']);
+				} else {
+					this.notify.error('Something is wrong!', 'There was an error during saving event.');
+				}
+			})
+
+		} else {
+			this.notify.error('Something is wrong!', 'The form is not valid. Check all values.');
+		}
 	}
 
 }
