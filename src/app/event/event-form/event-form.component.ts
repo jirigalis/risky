@@ -10,6 +10,7 @@ import { EventService } from '../event.service';
 import { CompetitorService } from '../../competitor/competitor.service';
 import { Topic } from '../../topics/topic';
 import { TopicsService } from '../../topics/topics.service';
+import { Question } from '../../question/question';
 
 @Component({
   selector: 'event-form',
@@ -22,7 +23,7 @@ export class EventFormComponent implements OnInit {
 	@Input() submitFunction;
 	eventForm: FormGroup;
 	allTopics: Topic[];
-	allQuestions
+	allQuestions: Question[];
 
 	constructor(
 		private EventService: EventService,
@@ -38,6 +39,13 @@ export class EventFormComponent implements OnInit {
 
 	ngOnInit() {
 		const id = +this.route.snapshot.paramMap.get('id');
+
+		this.TopicsService.getTopics()
+			.subscribe(topics => {
+				this.allTopics = topics
+			})
+
+		
 	}
 
 	ngOnChanges(changes: SimpleChanges) {
@@ -70,7 +78,7 @@ export class EventFormComponent implements OnInit {
 			})
 
 		} else {
-			this.notify.error('Something is wrong!', 'The form is not valid. Check all values.');
+			//this.notify.error('Something is wrong!', 'The form is not valid. Check all values.');
 		}
 	}
 

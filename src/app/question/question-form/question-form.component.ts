@@ -42,7 +42,7 @@ export class QuestionFormComponent implements OnInit, OnChanges {
 	
 	this.TopicsService.getTopics()
 	  .subscribe(topics => {
-		this.allTopics = topics;
+			this.allTopics = topics;
 	  })
 
 	this.LevelService.getLevels()

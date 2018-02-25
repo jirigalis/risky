@@ -12,7 +12,7 @@ export class EventListComponent implements OnInit {
 	events: Event[];
   subnavItems = [
     {
-      title: "Add new question",
+      title: "Create a new event",
       icon: "plus-circle",
       routerLink: "/events/new"
     }
@@ -21,8 +21,8 @@ export class EventListComponent implements OnInit {
   constructor(private EventService: EventService) { }
 
   ngOnInit() {
-	this.EventService.getAll()
-		.subscribe(events => this.events = events);
+    this.EventService.getAll()
+      .subscribe(events => this.events = events);
   }
 
 }
