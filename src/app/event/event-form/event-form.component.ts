@@ -7,6 +7,7 @@ import { NotificationsService } from 'angular2-notifications';
 
 import { Event } from '../event';
 import { EventService } from '../event.service';
+import { Competitor } from '../../competitor/competitor';
 import { CompetitorService } from '../../competitor/competitor.service';
 import { Topic } from '../../topics/topic';
 import { TopicsService } from '../../topics/topics.service';
@@ -24,6 +25,8 @@ export class EventFormComponent implements OnInit {
 	eventForm: FormGroup;
 	allTopics: Topic[];
 	allQuestions: Question[];
+	competitors: any[] = [];
+	selectedCompetitors: Competitor[];
 
 	constructor(
 		private EventService: EventService,
@@ -46,6 +49,12 @@ export class EventFormComponent implements OnInit {
 			})
 
 		
+		this.CompetitorService.getCompetitors()
+			.subscribe(competitors => {
+				//this.competitors = competitors;
+				this.competitors[0] = competitors;
+				this.competitors[1] = [];
+			})
 	}
 
 	ngOnChanges(changes: SimpleChanges) {
@@ -65,7 +74,8 @@ export class EventFormComponent implements OnInit {
 	}
 
 	submitEventForm() {    
-		if (this.eventForm.valid || true) {
+		console.log(this.selectedCompetitors);
+		if (this.eventForm.valid) {
 			//this.submitFunction(this.eventForm.value)
 			this.submitFunction({author: 1	, competitors: [1, 3] })
 			.subscribe(res => {
@@ -80,6 +90,11 @@ export class EventFormComponent implements OnInit {
 		} else {
 			//this.notify.error('Something is wrong!', 'The form is not valid. Check all values.');
 		}
+	}
+
+	removeMovedItem(i, list) {
+		console.log(list);
+		list.splice(list.indexOf(i), 1);
 	}
 
 }

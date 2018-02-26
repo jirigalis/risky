@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './core/auth.guard';
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import { DndListModule } from 'ngx-drag-and-drop-lists';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ModalService } from './shared/modal/modal.service';
@@ -84,7 +85,8 @@ import { EventDetailComponent } from './event/event-detail/event-detail.componen
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    DndListModule
   ],
   providers: [
     AuthGuard,

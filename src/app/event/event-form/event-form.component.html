@@ -1,16 +1,52 @@
 <form novalidate [formGroup]="eventForm" (ngSubmit)="submitEventForm()">
   <div class="row">
-    <div class="form-group col-md-6 col-sm-8 col-xs-12">
-        <label for="text">Text of question:</label>
-        
-    </div>
+	<div class="form-group col-md-6 col-sm-8 col-xs-12">
+		<label for="text">Select competitors:</label>
+		<!--select class="form-control"
+			id="available_competitors"
+			name="available_competitors"
+			formControlName="competitors">
+			<option *ngFor="let ac of competitors" [value]="ac.id">{{ac.name}}</option>
+		</select-->
+	</div>
+  </div>
+  <div class="form-row">
+	<div class="form-group col-md-6 col-sm-8 col-xs-12">
+		<div class="bg-info p-2">
+			<div [dndList]
+				[dndModel]="competitors[0]"
+        		[dndPlaceholder]="placeholder">
+			  <div *ngFor="let item of competitors[0]"
+				[dndDraggable]
+				[dndObject]="item"
+				(dndMoved)="removeMovedItem(i, competitors[0])"
+				[class.selected]="selected === item">
+				Name: {{item.name}}
+			  </div>
+			</div>
+		</div>
+		<div class="bg-warning p-2">
+			<div [dndList]
+				[dndModel]="selectedCompetitors"
+        		[dndPlaceholder]="placeholder">
+			  <div *ngFor="let item of selectedCompetitors"
+				[dndDraggable]
+				[dndObject]="item"
+				(dndMoved)="removeMovedItem(i, selectedCompetitors)"
+				[class.selected]="selected === item">
+				Name: {{item.name}}
+			  </div>
+			</div>
+		</div>
+		<div class="dndPlaceholder col-md-12" #placeholder></div>
+	</div>
   </div>
   <div class="row">
-    <div class="form-group col-md-12 col-xs-12">
-      <button type="submit" class="btn btn-primary">
-        <i class="fa fa-pencil"></i>
-        Confirm
-      </button>
-    </div>
+	<div class="form-group col-md-12 col-xs-12">
+	  <button type="submit" class="btn btn-primary">
+		<i class="fa fa-pencil"></i>
+		Confirm
+	  </button>
+	</div>
   </div>
 </form>
