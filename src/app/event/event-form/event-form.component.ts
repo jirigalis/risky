@@ -25,8 +25,8 @@ export class EventFormComponent implements OnInit {
 	eventForm: FormGroup;
 	allTopics: Topic[];
 	allQuestions: Question[];
-	competitors: any[] = [];
-	selectedCompetitors: Competitor[];
+	competitors: Competitor[];
+	selectedCompetitors: Competitor[] = [];
 
 	constructor(
 		private EventService: EventService,
@@ -51,9 +51,7 @@ export class EventFormComponent implements OnInit {
 		
 		this.CompetitorService.getCompetitors()
 			.subscribe(competitors => {
-				//this.competitors = competitors;
-				this.competitors[0] = competitors;
-				this.competitors[1] = [];
+				this.competitors = competitors;
 			})
 	}
 
