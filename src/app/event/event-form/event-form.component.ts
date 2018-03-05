@@ -26,6 +26,7 @@ export class EventFormComponent implements OnInit {
 	allTopics: Topic[];
 	allQuestions: Question[];
 	competitors: Competitor[];
+	allCompetitors: Competitor[];
 	selectedCompetitors: Competitor[] = [];
 
 	constructor(
@@ -52,6 +53,7 @@ export class EventFormComponent implements OnInit {
 		this.CompetitorService.getCompetitors()
 			.subscribe(competitors => {
 				this.competitors = competitors;
+				this.allCompetitors = _.cloneDeep(competitors);
 			})
 	}
 
@@ -71,8 +73,7 @@ export class EventFormComponent implements OnInit {
 		});
 	}
 
-	submitEventForm() {    
-		console.log(this.selectedCompetitors);
+	submitEventForm() {
 		if (this.eventForm.valid) {
 			//this.submitFunction(this.eventForm.value)
 			this.submitFunction({author: 1	, competitors: [1, 3] })
@@ -91,8 +92,12 @@ export class EventFormComponent implements OnInit {
 	}
 
 	removeMovedItem(i, list) {
-		console.log(list);
 		list.splice(list.indexOf(i), 1);
+	}
+
+	resetCompetitors() {
+		this.selectedCompetitors = [];
+		this.competitors = _.cloneDeep(this.allCompetitors);
 	}
 
 }
