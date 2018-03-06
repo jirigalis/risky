@@ -30,6 +30,12 @@ export class UserService {
       );
   }
 
+  getCurrentUser(): User {
+    let userString = JSON.parse(localStorage.getItem('user'));
+    let user = new User(userString.id, userString.login, userString.name, userString.role);
+    return user;
+  }
+
   logout() {
     localStorage.clear();
   }

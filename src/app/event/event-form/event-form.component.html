@@ -1,29 +1,35 @@
 <form novalidate [formGroup]="eventForm" (ngSubmit)="submitEventForm()">
 
   	<div class="row">
-		<div class="form-group col-md-2 col-sm-6 col-xs-12">
+		<div class="form-group col-md-3 col-sm-6 col-xs-12">
 			<label for="topics">Select competitors:</label>
-			<select multiple size="5" class="form-control form-control-lg" id="competitors" name="competitors" formControlName="competitors">
+			<select multiple size="6" class="form-control form-control-lg" id="competitors" name="competitors" formControlName="competitors">
 				<option *ngFor="let c of competitors" [value]="c.id">{{c.name}}</option>
 			</select>
+		  	<p>
+		  		Picked competitors: {{eventForm.value.competitors.length}}	
+		  	</p>
 		</div>
-	  	<div class="form-group col-md-2 col-sm-6 col-xs-12">
+	  	<div class="form-group col-md-3 col-sm-6 col-xs-12">
 		  	<label for="topics">Select topics:</label>
-		  	<select multiple size="5" class="form-control form-control-lg" id="topics" name="topics" formControlName="topics">
+		  	<select multiple size="6" class="form-control form-control-lg" id="topics" name="topics" formControlName="topics">
 			  	<option *ngFor="let t of allTopics" [value]="t.id">{{t.name}}</option>
 		  	</select>
+		  	<p>
+		  		Picked topics: {{eventForm.value.topics.length}}	
+		  	</p>
 		</div>
 	</div>
 	<div class="row">
-		<div class="form-group col-md-4 col-sm-12">
+		<div class="form-group col-md-6 col-sm-12">
 			<div class="card">
 				<div class="card-body">
 					<div class="row">
 						<div class="col">
-							{{eventForm.value|json}}
+							{{eventForm.value.competitors|json}}
 						</div>
 						<div class="col">
-							{{topics|json}}
+							{{eventForm.value.topics|json}}
 						</div>
 					</div>
 				</div>
@@ -32,9 +38,9 @@
 	</div>
 	<div class="row">
 		<div class="form-group col-md-12 col-xs-12">
-		<button type="submit" class="btn btn-primary">
-			<i class="fa fa-pencil"></i>
-			Confirm
+		<button type="submit" class="btn btn-primary pull-right">
+			<i class="fa fa-trophy"></i>
+			Generate Event
 		</button>
 		</div>
   	</div>

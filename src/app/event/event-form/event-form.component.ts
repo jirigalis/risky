@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 import * as moment from 'moment';
 import { NotificationsService } from 'angular2-notifications';
 
+import { UserService } from '../../core/user.service';
 import { Event } from '../event';
 import { EventService } from '../event.service';
 import { Competitor } from '../../competitor/competitor';
@@ -31,6 +32,7 @@ export class EventFormComponent implements OnInit {
 
 	constructor(
 		private EventService: EventService,
+		private UserService: UserService,
 		private CompetitorService: CompetitorService,
 		private TopicsService: TopicsService,
 		private fb: FormBuilder,
@@ -75,19 +77,20 @@ export class EventFormComponent implements OnInit {
 
 	submitEventForm() {
 		if (this.eventForm.valid) {
-			//this.submitFunction(this.eventForm.value)
-			this.submitFunction({author: 1	, competitors: [1, 3] })
+			let event = this.eventForm.value;
+			event.author = this.UserService.getCurrentUser().id;
+			this.submitFunction(event)
 			.subscribe(res => {
 				if (res) {
 					this.notify.success('Success', 'The event was saved.');
-					this.router.navigate(['events']);
+					//this.router.navigate(['events']);
 				} else {
 					this.notify.error('Something is wrong!', 'There was an error during saving event.');
 				}
 			})
 
 		} else {
-			//this.notify.error('Something is wrong!', 'The form is not valid. Check all values.');
+			this.notify.error('Something is wrong!', 'The form is not valid. Check all values.');
 		}
 	}
 
