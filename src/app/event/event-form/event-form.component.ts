@@ -63,7 +63,8 @@ export class EventFormComponent implements OnInit {
 		if (typeof changes.event.currentValue !== 'undefined') {
 			this.eventForm.reset({
 				competitors: this.event.competitors,
-				topics: this.event.topics
+				topics: this.event.topics,
+				questionCount: this.event.questionCount,
 			})
 		}
 	}
@@ -71,7 +72,8 @@ export class EventFormComponent implements OnInit {
 	createForm() {
 		this.eventForm = this.fb.group({
 			competitors: new FormControl([], Validators.required),
-			topics: new FormControl([], Validators.required)
+			topics: new FormControl([], Validators.required),
+			questionCount: new FormControl(5, Validators.required)
 		});
 	}
 

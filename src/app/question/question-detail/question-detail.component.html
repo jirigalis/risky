@@ -2,5 +2,14 @@
 <subnav [items]="subnavItems"></subnav>
 <main class="py-3 px-4">
   <h2>Detail of the question</h2>
-  <question-form [question]="question" [submitFunction]="submitForm"></question-form>
+  <div class="row">
+  	<div class="col-8">
+  		<question-form [question]="question" [submitFunction]="submitForm"></question-form>
+  	</div>
+  	<div class="col-4">
+  		<p>
+  			Test
+  		</p>
+  	</div>
+  </div>
 </main>

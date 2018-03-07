@@ -22,6 +22,7 @@ export class QuestionFormComponent implements OnInit, OnChanges {
   @Input() submitFunction;
   allTopics: Topic[];
   levels: Level[];
+  showLoader = false;
 
   questionForm: FormGroup;
 
@@ -54,7 +55,6 @@ export class QuestionFormComponent implements OnInit, OnChanges {
 	  this.questionForm.reset({
 		text: this.question.text,
 		topics: this.question.topics,
-		attachmentType: 'base64',
 		attachment: this.question.attachment,
 		level: this.question.level
 	  });
@@ -66,7 +66,6 @@ export class QuestionFormComponent implements OnInit, OnChanges {
 	  text: new FormControl('', Validators.required),
 	  topics: new FormControl([], Validators.required),
 	  attachment: new FormControl(''),
-	  attachmentType: new FormControl('base64'),
 	  level: new FormControl(1)
 	});
   }
@@ -87,6 +86,26 @@ export class QuestionFormComponent implements OnInit, OnChanges {
 	  this.notify.error('Something is wrong!', 'The form is not valid. Check all values.');
 	}
   }
+
+  handleFileSelect(evt){
+      var files = evt.target.files;
+      var file = files[0];
+    
+    if (files && file) {
+        var reader = new FileReader();
+
+        reader.onload =this._handleReaderLoaded.bind(this);
+        this.showLoader = true;
+        reader.readAsBinaryString(file);
+    }
+  }
+  
+  _handleReaderLoaded(readerEvt) {
+     var binaryString = readerEvt.target.result;
+        const base64str = btoa(binaryString);
+        this.showLoader = false;
+        this.questionForm.patchValue({attachment: base64str})
+    }
 
   get text() {
 	return this.questionForm.get('text');

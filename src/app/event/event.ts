@@ -6,6 +6,7 @@ export class Event {
 	state: EventState;
 	competitors;
 	topics;
+	questionCount: number;
 }
 
 export enum EventState {

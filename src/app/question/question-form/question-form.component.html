@@ -27,25 +27,13 @@
     </div>
   </div>
   <div class="row">
-    <div class="form-group col-md-3 col-sm-6 col-xs-12">
-      <div class="form-check">
-        <input type="radio" id="attachment-file-radio" formControlName="attachmentType" value="file"  [attr.disabled]="true" />
-        <label for="attachment-file-radio" class="form-check-label">File Attachmnet</label>
-      </div>
-      <div class="form-check">
-        <input type="radio" id="attachment-base64-radio" formControlName="attachmentType" value="base64"/>
-        <label for="attachment-base64-radio" class="form-check-label">Base64 Attachment</label>
-      </div>
-    </div>
+    <div class="form-group col-xs-12 col-sm-5 col-md-4">
+       <input type="file" id="filePicker" (change)="handleFileSelect($event)">
+       <i class="fa fa-circle-o-notch fa-spin fa-fw pull-right" *ngIf="showLoader"></i>
+     </div>
   </div>
   <div class="row">
-    <div class="form-group col-md-4 col-sm-5 col-xs-12" *ngIf="attachmentType.value === 'file'">
-      <div class="">
-        <label for="attachment-file">Choose a file:</label>
-        <input type="file" class="form-control" name="attachment" id="attachment-file" formControlName="attachment">
-      </div>
-    </div>
-    <div class="form-group col-md-4 col-sm-5 col-xs-12" *ngIf="attachmentType.value === 'base64'">
+    <div class="form-group col-md-4 col-sm-5 col-xs-12">
       <textarea class="form-control" name="attachment" formControlName="attachment" placeholder="Paste Base64 code..."></textarea>
     </div>
   </div>

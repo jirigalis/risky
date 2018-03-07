@@ -21,18 +21,10 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="form-group col-md-6 col-sm-12">
-			<div class="card">
-				<div class="card-body">
-					<div class="row">
-						<div class="col">
-							{{eventForm.value.competitors|json}}
-						</div>
-						<div class="col">
-							{{eventForm.value.topics|json}}
-						</div>
-					</div>
-				</div>
+		<div class="form-group row col-md-6 col-sm-12">
+			<label for="question-count" class="col-sm-12 col-xs-12">Question count for each topic:</label>
+			<div class="col-sm-2 col-xs-12">
+				<input type="number" class="form-control" formControlName="questionCount" name="question-count" id="question-count" min="1">
 			</div>
 		</div>
 	</div>
