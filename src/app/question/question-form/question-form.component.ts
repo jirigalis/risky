@@ -48,7 +48,17 @@ export class QuestionFormComponent implements OnInit, OnChanges {
 
 	this.LevelService.getLevels()
 	  .subscribe(levels => this.levels = levels);
+
+	this.onChanges();
   }
+
+  onChanges(): void {
+	  this.questionForm.get('attachment').valueChanges.subscribe(val => {
+		this.showLoader = true;
+		this.question.attachment = val;
+		this.showLoader = false;
+	  });
+	}
 
   ngOnChanges(changes: SimpleChanges) {
 	if (typeof changes.question.currentValue !== "undefined") {

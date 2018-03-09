@@ -2,5 +2,12 @@
 <subnav [items]="subnavItems"></subnav>
 <main class="py-3 px-4">
   <h2>New question</h2>
-  <question-form [question]="question" [submitFunction]="submitForm"></question-form>
+	<div class="row">
+		<div class="col-6">
+			<question-form [question]="question" [submitFunction]="submitForm"></question-form>
+		</div>
+		<div class="col-6">
+			<img [src]="_DomSanitizer.bypassSecurityTrustUrl('data:image/jpg;charset=utf-8;base64, '+question.attachment)" class="img-thumbnail" />
+		</div>
+	</div>
 </main>

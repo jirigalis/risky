@@ -1,15 +1,13 @@
 <navbar></navbar>
 <subnav [items]="subnavItems"></subnav>
 <main class="py-3 px-4">
-  <h2>Detail of the question</h2>
-  <div class="row">
-  	<div class="col-8">
-  		<question-form [question]="question" [submitFunction]="submitForm"></question-form>
-  	</div>
-  	<div class="col-4">
-  		<p>
-  			Test
-  		</p>
-  	</div>
-  </div>
+<h2>Detail of the question</h2>
+	<div class="row">
+		<div class="col-6">
+			<question-form [question]="question" [submitFunction]="submitForm"></question-form>
+		</div>
+		<div class="col-6">
+			<img [src]="_DomSanitizer.bypassSecurityTrustUrl('data:image/jpg;charset=utf-8;base64, '+question.attachment)" class="img-thumbnail" />
+		</div>
+	</div>
 </main>

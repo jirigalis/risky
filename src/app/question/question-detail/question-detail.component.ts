@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { QuestionService } from '../question.service';
 import { TopicsService } from '../../topics/topics.service';
@@ -13,7 +14,7 @@ import { Topic } from '../../topics/topic';
 })
 export class QuestionDetailComponent implements OnInit {
 
-  question: Question = undefined;
+  question: Question = new Question();
   subnavItems = [
     {
       title: "Back",
@@ -25,7 +26,8 @@ export class QuestionDetailComponent implements OnInit {
   constructor(
     private QuestionService: QuestionService,
     private TopicsService: TopicsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public _DomSanitizer: DomSanitizer,
   ) { }
 
   ngOnInit() {
@@ -33,6 +35,7 @@ export class QuestionDetailComponent implements OnInit {
     this.QuestionService.getQuestion(id)
       .subscribe(question => {
         this.question = question;
+        this.question.attachment = question.attachment;
       });
   }
 

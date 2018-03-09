@@ -1,6 +1,6 @@
 <form novalidate [formGroup]="questionForm" (ngSubmit)="submitQuestionForm()">
   <div class="row">
-    <div class="form-group col-md-6 col-sm-8 col-xs-12">
+    <div class="form-group col-xs-12 col-sm-12">
         <label for="text">Text of question:</label>
         <input class="form-control" placeholder="text" formControlName="text">
         <div class="alert alert-danger" *ngIf="!text.pristine && text.errors?.required">
@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="form-group col-md-3 col-sm-6 col-xs-12">
+    <div class="form-group col-sm-6 col-xs-12">
       <label for="topics">Topics:</label>
       <select multiple class="form-control" id="topics"  name="topics" formControlName="topics">
         <option *ngFor="let t of allTopics" [value]="t.id">{{t.name}}</option>
@@ -18,7 +18,7 @@
         You must select at least one category!
       </div>
     </div>
-    <div class="form-group col-md-3 col-sm-6 col-xs-12">
+    <div class="form-group col-sm-6 col-xs-12">
       <label for="level">Level:</label>
       <div class="form-check" *ngFor="let l of levels">
         <input type="radio" id="level-{{l.id}}" formControlName="level" [value]="l.id">
@@ -27,18 +27,18 @@
     </div>
   </div>
   <div class="row">
-    <div class="form-group col-xs-12 col-sm-5 col-md-4">
+    <div class="form-group col-xs-12 col-sm-5">
        <input type="file" id="filePicker" (change)="handleFileSelect($event)">
        <i class="fa fa-circle-o-notch fa-spin fa-fw pull-right" *ngIf="showLoader"></i>
      </div>
   </div>
   <div class="row">
-    <div class="form-group col-md-4 col-sm-5 col-xs-12">
+    <div class="form-group col-xs-12 col-sm-12">
       <textarea class="form-control" name="attachment" formControlName="attachment" placeholder="Paste Base64 code..."></textarea>
     </div>
   </div>
   <div class="row">
-    <div class="form-group col-md-12 col-xs-12">
+    <div class="form-group col-sm-12 col-xs-12">
       <button type="submit" class="btn btn-primary">
         <i class="fa fa-pencil"></i>
         Confirm

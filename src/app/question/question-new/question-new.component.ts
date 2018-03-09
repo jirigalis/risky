@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { Question } from '../question';
 import { QuestionService } from '../question.service';
@@ -10,6 +11,8 @@ import { QuestionService } from '../question.service';
 })
 export class QuestionNewComponent implements OnInit {
 
+  question: Question = new Question();
+
   subnavItems = [
     {
       title: "Back",
@@ -18,7 +21,10 @@ export class QuestionNewComponent implements OnInit {
     }
   ]
 
-  constructor(private QuestionService: QuestionService) { }
+  constructor(
+    private QuestionService: QuestionService, 
+    public _DomSanitizer: DomSanitizer,
+    ) { }
 
   ngOnInit() {
   }

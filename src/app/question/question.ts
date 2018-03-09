@@ -4,6 +4,6 @@ export class Question {
     id: number;
     text: string;
     level: number;
-    attachment: string;
+    attachment: string = "";
     topics;
 }
