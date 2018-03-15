@@ -49,6 +49,7 @@ import { CompetitorNewComponent } from './competitor/competitor-new/competitor-n
 import { EventNewComponent } from './event/event-new/event-new.component';
 import { EventFormComponent } from './event/event-form/event-form.component';
 import { EventDetailComponent } from './event/event-detail/event-detail.component';
+import { ContentWrapperComponent } from './core/content-wrapper/content-wrapper.component';
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import { EventDetailComponent } from './event/event-detail/event-detail.componen
     EventNewComponent,
     EventFormComponent,
     EventDetailComponent,
+    ContentWrapperComponent,
   ],
   imports: [
     BrowserModule,
