@@ -12,14 +12,12 @@
     -webkit-transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
     -moz-transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
     -ms-transition: width $action-transition-duration $action-transition-timing-function, background $action-transition-duration $action-transition-timing-function;
-    background: $sidebar-light-bg;
     width: $sidebar-width-lg;
     height: $navbar-height;
 
     .navbar-brand {
       color: $white;
       font-size: 1.5rem;
-      line-height: 48px;
       margin-right: 0;
       padding: 0.25rem 0;
 
@@ -265,7 +263,7 @@
           .nav-link {
             height: $navbar-height;
             font-size: $default-font-size;
-            padding: 16px 25px;
+            padding: 19px 25px;
             @include display-flex;
 
             i {

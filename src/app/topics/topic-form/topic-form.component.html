@@ -1,13 +1,13 @@
 <form novalidate [formGroup]="topicForm" (ngSubmit)="submitTopicForm()">
 	<div class="row">
-		<div class="form-group col-sm-12 col-md-6">
+		<div class="form-group col-sm-12">
 			<label for="name">Topic name:</label>
 			<input id="name" class="form-control" placeholder="Topic name" formControlName="name" />
 			<div class="alert alert-danger" *ngIf="!name.pristine && name.errors?.required">
 				Name of the topic must not be empty!
 			</div>
 		</div>
-		<div class="form-group col-sm-12 col-md-6">
+		<div class="form-group col-sm-12">
 			<label for="description">Topic description:</label>
 			<textarea class="form-control" id="description" formControlName="description"></textarea>
 		</div>

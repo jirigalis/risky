@@ -1,6 +1,22 @@
-<navbar></navbar>
-<subnav [items]="subnavItems"></subnav>
-<main class="py-3 px-4">
-  <h2>New Topic</h2>
-  <topic-form [topic]="topic" [submitFunction]="submitForm"></topic-form>
-</main>
+<navbar [items]="subnavItems"></navbar>
+<div class="container-fluid page-body-wrapper">
+	<app-menu></app-menu>
+	<div class="main-panel">
+		<div class="content-wrapper">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-6 d-flex align-items-stretch grid-margin">
+					<div class="row flex-grow">
+						<div class="col-12">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-title">New Topic</h4>
+									<topic-form [topic]="topic" [submitFunction]="submitForm"></topic-form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

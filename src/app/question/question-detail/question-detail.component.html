@@ -1,13 +1,29 @@
-<navbar></navbar>
-<subnav [items]="subnavItems"></subnav>
-<main class="py-3 px-4">
-<h2>Detail of the question</h2>
+<navbar [items]="subnavItems"></navbar>
+<div class="container-fluid page-body-wrapper">
+<app-menu></app-menu>
+<div class="main-panel">
+<div class="content-wrapper">
 	<div class="row">
-		<div class="col-6">
-			<question-form [question]="question" [submitFunction]="submitForm"></question-form>
-		</div>
-		<div class="col-6">
-			<img [src]="_DomSanitizer.bypassSecurityTrustUrl('data:image/jpg;charset=utf-8;base64, '+question.attachment)" class="img-thumbnail" />
+		<div class="col-xs-12 col-sm-12 d-flex align-items-stretch grid-margin">
+			<div class="row flex-grow">
+				<div class="col-12">
+					<div class="card">
+						<div class="card-body">
+							<h4 class="card-title">Detail of the question</h4>
+							<div class="row">								
+								<div class="col-6">
+									<question-form [question]="question" [submitFunction]="submitForm"></question-form>
+								</div>
+								<div class="col-6">
+									<img [src]="_DomSanitizer.bypassSecurityTrustUrl('data:image/jpg;charset=utf-8;base64, '+question.attachment)" class="img-thumbnail" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-</main>
+</div>
+</div>
+</div>

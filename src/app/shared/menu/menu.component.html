@@ -1,0 +1,50 @@
+<nav class="sidebar sidebar-offcanvas">
+	<ul class="nav">
+		<li class="nav-item nav-profile">
+			<div class="nav-link">
+				<div class="profile-image">
+					<span class="fa-stack fa-lg mr-2">
+						<span class="fa fa-circle fa-stack-2x" style="color:#87c54e;"></span>
+						<span class="fa fa-trophy fa-stack-1x fa-inverse"></span>
+					</span>
+					<span class="online-status online"></span> 
+				</div>
+				<div class="profile-name">
+					<p class="name">Richard V.Welsh</p>
+					<p class="designation">Manager</p>
+					<div class="badge badge-teal mx-auto mt-3">Online</div>
+				</div>
+			</div>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" >
+				<i class="fa fa-home menu-icon"></i>
+				Home
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" routerLink="/events" routerLinkActive="active">
+				<i class="fa fa-trophy menu-icon"></i>
+				Events
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" routerLink="/competitors" routerLinkActvie="active">
+				<i class="fa fa-users menu-icon"></i>
+				Competitors
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" routerLink="/topics" routerLinkActive="active">
+				<i class="fa fa-paw menu-icon"></i>
+				Topics
+			</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" routerLink="/questions" routerLinkActive="active">
+				<i class="fa fa-question-circle menu-icon"></i>
+				Questions
+			</a>
+		</li>
+	</ul>
+</nav>

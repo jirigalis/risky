@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UserService } from '../../core/user.service';
@@ -9,6 +9,7 @@ import { UserService } from '../../core/user.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  @Input() items;
 
   constructor(
     private user: UserService,
@@ -21,6 +22,10 @@ export class NavbarComponent implements OnInit {
   logout() {
     this.user.logout();
     this.router.navigate(['/login']);
+  }
+
+  performAction(item) {
+    item.action();
   }
 
 }

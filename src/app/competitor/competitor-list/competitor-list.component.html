@@ -1,34 +1,44 @@
-<navbar></navbar>
-<subnav [items]="subnavItems"></subnav>
-<main class="px-4 py-3">
-  <h2>Competitors</h2>
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Competitor name</th>
-          <th>Created</th>
-          <th>Note</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let c of competitors">
-          <td>{{c.id}}</td>
-          <td>{{c.name}}</td>
-          <td>{{formatTimestamp(c.created)}}</td>
-          <td>{{c.note}}</td>
-          <td>
-            <a routerLink="/competitors/{{c.id}}" role="button" placement="top" ngbTooltip="Edit this topic">
-              <i class="fa fa-pencil"></i>
-            </a>
-            <a (click)="delete(c.id)" role="button" placement="top" ngbTooltop="Delete this topic">
-              <i class="fa fa-trash"></i>
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</main>
+<navbar [items]="subnavItems"></navbar>
+<div class="container-fluid page-body-wrapper">
+<app-menu></app-menu>
+<div class="main-panel">
+<div class="content-wrapper">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Competitors</h4>
+					<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Competitor name</th>
+							<th>Created</th>
+							<th>Note</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let c of competitors">
+							<td>{{c.id}}</td>
+							<td>{{c.name}}</td>
+							<td>{{formatTimestamp(c.created)}}</td>
+							<td>{{c.note}}</td>
+							<td>
+								<a routerLink="/competitors/{{c.id}}" role="button" placement="top" ngbTooltip="Edit this topic">
+									<i class="fa fa-pencil"></i>
+								</a>
+								<a (click)="delete(c.id)" role="button" placement="top" ngbTooltop="Delete this topic">
+									<i class="fa fa-trash"></i>
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>

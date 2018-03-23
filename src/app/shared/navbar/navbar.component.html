@@ -1,49 +1,46 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <span class="fa-stack fa-lg mr-2">
-    <i class="fa fa-circle fa-stack-2x" style="color:#87c54e;"></i>
-    <i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
-  </span>
-
-  <a class="navbar-brand" href="#">Risky</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" >Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/events" routerLinkActive="active">Events</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/competitors" routerLinkActvie="active">Competitors</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/topics" routerLinkActive="active">Topics</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/questions" routerLinkActive="active">Questions</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item" *ngIf="!user.isLoggedIn()">
-          <a class="nav-link" routerLink="/login">
-            <i class="fa fa-sign-in"></i>
-            Login
-          </a>
-        </li>
-        <li class="nav-item" *ngIf="user.isLoggedIn()">
-          <a class="nav-link" (click)="logout()" role="button">
-            <i class="fa fa-sign-out"></i>
-            Logout
-          </a>
-        </li>
-      </ul>
-    </form>
-  </div>
+<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+	<div class="navbar-brand-wrapper d-flex align-items-top p-2">
+		<span class="fa-stack fa-lg mr-2">
+			<i class="fa fa-circle fa-stack-2x" style="color:#87c54e;"></i>
+			<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+		</span>
+		<a class="navbar-brand" href="#">Risky</a>
+	</div>
+	
+	<div class="navbar-menu-wrapper d-flex align-items-center">
+		<ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
+			<li class="nav-item" *ngFor="let item of items">
+				<a *ngIf="item.routerLink"
+					class="nav-link"
+					[routerLink]="item.routerLink ? item.routerLink : null"
+					>
+					<i *ngIf="item?.icon" class="fa fa-{{item.icon}}"></i>
+					{{item.title}}
+				</a>
+				<a *ngIf="item.action"
+					class="nav-link"
+					role="button"
+					(click)="performAction(item)">
+					<i *ngIf="item?.icon" class="fa fa-{{item.icon}}"></i>
+					{{item.title}}
+				</a>
+			</li>
+		</ul>
+		
+		
+		<ul class="navbar-nav navbar-nav-right">
+			<li class="nav-item" *ngIf="!user.isLoggedIn()">
+				<a class="nav-link" routerLink="/login">
+					<i class="fa fa-sign-in"></i>
+					Login
+				</a>
+			</li>
+			<li class="nav-item" *ngIf="user.isLoggedIn()">
+				<a class="nav-link" (click)="logout()" role="button">
+					<i class="fa fa-sign-out"></i>
+					Logout
+				</a>
+			</li>
+		</ul>
+	</div>
 </nav>
